@@ -6,25 +6,58 @@ export default function TextForm(props) {
     let UC = text.toUpperCase();
     setText(UC);
   };
+  const handleLoClick = () => {
+    let UC = text.toLowerCase();
+    setText(UC);
+  };
   const handleOnChange = (event) => {
     //below line will set the value under textarea whenever event trigger and it trigger on onChange event listener
     setText(event.target.value);
   };
+  const handlePreview = () => {};
   return (
-    <div>
-      <h1>{props.heading}</h1>
-      <div className="mb-3">
+    <>
+      <div>
+        <h1>{props.heading}</h1>
+        <div className="my-3">
+          <textarea
+            className="form-control"
+            value={text}
+            onChange={handleOnChange}
+            id="myBox"
+            rows="8"
+          ></textarea>
+        </div>
+        <button
+          className="btn btn-outline-primary mx-2"
+          onClick={handleUpClick}
+        >
+          UpperCase
+        </button>
+        <button className="btn btn-outline-danger mx-2" onClick={handleLoClick}>
+          LowerCase
+        </button>
+      </div>
+      <div className="container my-3">
+        <h3>Your Text Summery</h3>
+        <p>
+          {" "}
+          {text.split(" ").length - 1} words, {text.length} characters,{" "}
+          {0.008 * text.split(" ").length} Minutes Read
+        </p>
+      </div>
+      <div className="container my-3">
+        <h4>
+          <b>Preview</b>
+        </h4>
         <textarea
           className="form-control"
           value={text}
-          onChange={handleOnChange}
+          onChange={handlePreview}
           id="myBox"
-          rows="8"
+          rows="20"
         ></textarea>
       </div>
-      <button className="btn btn-primary" onClick={handleUpClick}>
-        Convert In UpperCase
-      </button>
-    </div>
+    </>
   );
 }
