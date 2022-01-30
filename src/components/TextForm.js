@@ -15,6 +15,10 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
   const handlePreview = () => {};
+
+  const handleClear = () => {
+    setText("");
+  };
   return (
     <>
       <div>
@@ -34,16 +38,21 @@ export default function TextForm(props) {
         >
           UpperCase
         </button>
-        <button className="btn btn-outline-danger mx-2" onClick={handleLoClick}>
+        <button
+          className="btn btn-outline-success mx-2"
+          onClick={handleLoClick}
+        >
           LowerCase
+        </button>
+        <button className="btn btn-danger mx-2" onClick={handleClear}>
+          Clear Text
         </button>
       </div>
       <div className="container my-3">
         <h3>Your Text Summery</h3>
         <p>
-          {" "}
-          {text.split(" ").length - 1} words, {text.length} characters,{" "}
-          {0.008 * text.split(" ").length} Minutes Read
+          {text?.split(" ")?.length - 1} words, {text?.length} characters,{" "}
+          {0.008 * text?.split(" ").length} Minutes Read
         </p>
       </div>
       <div className="container my-3">
