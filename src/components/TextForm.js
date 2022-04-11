@@ -84,7 +84,7 @@ export default function TextForm(props) {
         <h3>Your Text Summery</h3>
         <p>
           {
-            text?.split(" ")?.filter((element) => {
+            text?.split(/\s+/)?.filter((element) => {
               return element.length !== 0;
             }).length
           }{" "}
