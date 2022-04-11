@@ -54,13 +54,13 @@ export default function TextForm(props) {
             rows="8"
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}>
+        <button className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>
           UpperCase
         </button>
-        <button className="btn btn-success mx-2" onClick={handleLoClick}>
+        <button className="btn btn-success mx-2 my-2" onClick={handleLoClick}>
           LowerCase
         </button>
-        <button className="btn btn-warning mx-2" onClick={handleCopy}>
+        <button className="btn btn-warning mx-2 my-2" onClick={handleCopy}>
           Copy Text
         </button>
 
@@ -71,7 +71,7 @@ export default function TextForm(props) {
           Remove Extra Spaces
         </button>
 
-        <button className="btn btn-danger mx-2" onClick={handleClear}>
+        <button className="btn btn-danger mx-2 my-2" onClick={handleClear}>
           Clear Text
         </button>
       </div>
@@ -83,8 +83,17 @@ export default function TextForm(props) {
       >
         <h3>Your Text Summery</h3>
         <p>
-          {text?.split(" ")?.length - 1} words, {text?.length} characters,{" "}
-          {0.008 * text?.split(" ").length} Minutes Read
+          {
+            text?.split(" ")?.filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          words, {text?.length} characters,{" "}
+          {0.008 *
+            text?.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length}{" "}
+          Minutes Read
         </p>
       </div>
       <div
